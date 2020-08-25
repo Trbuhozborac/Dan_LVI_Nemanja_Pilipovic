@@ -75,11 +75,15 @@ namespace Zadatak_1.ViewModels
 
         #region Functions
 
+        /// <summary>
+        /// Download the HTML content from website to .html file
+        /// </summary>
         private void DownloadExecute()
         {
             string _location = @"~/../../../Html Content/Content.html";
             try
             {
+                //If URL is valid download will be executed
                 using(WebClient client = new WebClient())
                 {
                     client.DownloadFile(Content.URL, _location);                   
@@ -88,11 +92,15 @@ namespace Zadatak_1.ViewModels
             }
             catch (Exception ex)
             {
+                //If exception occure that means that URL is Invalid
                 MessageBox.Show("Invalid URL");
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
 
+        /// <summary>
+        /// Checks if URL filed is populated
+        /// </summary>     
         private bool CanDownloadExecute()
         {
             if (string.IsNullOrEmpty(Content.URL))
@@ -105,6 +113,9 @@ namespace Zadatak_1.ViewModels
             }
         }
 
+        /// <summary>
+        /// Zipp the folder where content file is placed
+        /// </summary>
         private void ZipExecute()
         {
             try
@@ -118,11 +129,15 @@ namespace Zadatak_1.ViewModels
             }
             catch (Exception ex)
             {
+                //Exception will occure if file is already zipped
                 MessageBox.Show("You already Zipped folder");
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
 
+        /// <summary>
+        /// Checks if Zipp button can be clicked
+        /// </summary>        
         private bool CanZipExecute()
         {
             return true;
